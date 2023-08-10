@@ -2,6 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const loader = express()
 
+const PORT = process.env.PORT
 
 loader.use(cors())
 loader.use(express.json())
@@ -16,6 +17,6 @@ const {router, publicRouter} = require('./config/router/routes')
 loader.use('/api', router)
 loader.use('/oapi', publicRouter)
 
-loader.listen(3003, function(){
+loader.listen(PORT, function(){
     console.log("BACKEND is running on port 3003")
 })

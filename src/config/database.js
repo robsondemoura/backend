@@ -3,15 +3,16 @@ const mongoose = require('mongoose')
 
 async function main(){
     try {
+        const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://127.0.0.1/toolFlow'
         mongoose.set("strictQuery",true)
-        await mongoose.connect('mongodb://127.0.0.1/toolFlow')
+        await mongoose.connect(url)
     } catch (error) {
         console.log(`Error: ${error}`)
     }
 }
-/*
-const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://127.0.0.1/toolFlow'
-module.exports = mongoose.connect(url)*/
+
+
+
 
 
 module.exports = main

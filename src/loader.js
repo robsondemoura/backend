@@ -1,3 +1,21 @@
-const server = require('./config/server')
-require('./config/database')
-require('./config/routes')(server)
+const express = require("express")
+const cors = require("cors")
+const loader = express()
+
+
+loader.use(cors())
+loader.use(express.json())
+loader.use(express.urlencoded({extended: true}))
+
+const connection = require('./config/database')
+
+connection()
+
+const {router, publicRouter} = require('./config/router/routes')
+
+loader.use('/api', router)
+loader.use('/oapi', publicRouter)
+
+loader.listen(3003, function(){
+    console.log("BACKEND is running on port 3003")
+})

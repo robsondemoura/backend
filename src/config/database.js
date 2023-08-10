@@ -1,7 +1,20 @@
 const mongoose = require('mongoose')
-mongoose.Promise = global.Promise
+
+
+async function main(){
+    try {
+        mongoose.set("strictQuery",true)
+        await mongoose.connect('mongodb://127.0.0.1/toolFlow')
+    } catch (error) {
+        console.log(`Error: ${error}`)
+    }
+}
+/*
 const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://127.0.0.1/toolFlow'
-module.exports = mongoose.connect(url)
+module.exports = mongoose.connect(url)*/
+
+
+module.exports = main
 
 mongoose.Error.messages.general.required = "O atributo '{PATH} é obrigatório"
 

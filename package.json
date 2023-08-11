@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/loader.js",
   "scripts": {
+    "start":"node src/loader.js",
     "production": "pm2 start src/loader.js --name tool-flow-backend",
     "dev": "nodemon"
   },

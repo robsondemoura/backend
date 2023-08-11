@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/loader.js",
   "scripts": {
-    "start": "node src/loader.js",
+    "start": "node loader.js",
     "dev": "nodemon"
   },
   "keywords": [],

@@ -8,11 +8,12 @@ loader.use(cors())
 loader.use(express.json())
 loader.use(express.urlencoded({extended: true}))
 
-const connection = require('./src/config/database')
+const connection = require('./config/database')
 
 connection()
 
-const {router, publicRouter} = require('./src/config/router/routes')
+
+const {router, publicRouter} = require('./config/router/routes')
 
 loader.use('/api', router)
 loader.use('/oapi', publicRouter)

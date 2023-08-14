@@ -2,7 +2,7 @@ const _ = require('lodash')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const {User} = require('./user')
-
+const env = require('../../.env')
 
 const emailRegex = /\S+@\S+\.\S+/
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})/
@@ -23,7 +23,7 @@ const login = async (req,res,next)=>{
         res.status(400).send({errors:["Usuário não encontrado"]})
         
     } else if(bcrypt.compareSync(password, user.password)){
-        const token = jwt.sign(user.toJSON(), process.env.authSecret, {expiresIn:"1 day"})
+        const token = jwt.sign(user.toJSON(), env.authSecret, {expiresIn:"1 day"})
 
         const {name, email} = user
 

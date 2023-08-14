@@ -11,10 +11,6 @@ async function main(){
     }
 }
 
-
-
-
-
 module.exports = main
 
 mongoose.Error.messages.general.required = "O atributo '{PATH} é obrigatório"

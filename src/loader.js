@@ -1,8 +1,10 @@
+require('dotenv').config()
 const express = require("express")
 const cors = require("cors")
 const loader = express()
 
-const PORT = process.env.PORT
+
+const PORT = process.env.PORT || 3003
 
 loader.use(cors())
 loader.use(express.json())
@@ -19,5 +21,5 @@ loader.use('/api', router)
 loader.use('/oapi', publicRouter)
 
 loader.listen(PORT, function(){
-    console.log("BACKEND is running on port 3003")
+    console.log(`BACKEND is running on port ${PORT}`)
 })

@@ -16,6 +16,7 @@ const sendErrorsFromDB = (res,dbErrors) =>{
 const login = async (req,res,next)=>{
     const email = req.body.email || ''
     const password = req.body.password || ''
+    const secret = process.env.AUTH_SECRET
 
     const user = await User.findOne({email}).exec() 
 
@@ -23,7 +24,7 @@ const login = async (req,res,next)=>{
         res.status(400).send({errors:["Usuário não encontrado"]})
         
     } else if(bcrypt.compareSync(password, user.password)){
-        const token = jwt.sign(user.toJSON(), process.env.authSecret, {expiresIn:"1 day"})
+        const token = jwt.sign(user.toJSON(), secret, {expiresIn:"1 day"})
 
         const {name, email} = user
 

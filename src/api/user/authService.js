@@ -36,8 +36,8 @@ const login = async (req,res,next)=>{
 
 const validateToken = (req, res, next) =>{
     const token = req.body.token || ''
-
-    jwt.verify(token, env.authSecret, function(err, decoded){
+    const secret = process.env.AUTH_SECRET
+    jwt.verify(token, secret, function(err, decoded){
         return res.status(200).send({valid: !err})
     })
 } 

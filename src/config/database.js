@@ -1,12 +1,14 @@
-const mongoose = require('mongoose')
+require('dotenv').config()
 
+const mongoose = require('mongoose')
 
 async function main(){
     try {
-        const url = process.env.MONGODB_URI 
+         
         mongoose.set("strictQuery",true)
-        await mongoose.connect(url)
+        await mongoose.connect(process.env.MONGO_URI)
         console.log('Conectado')
+        
     } catch (error) {
         console.log(`Error: ${error}`)
     }

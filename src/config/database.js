@@ -6,6 +6,7 @@ async function main(){
         const url = process.env.MONGODB_URI 
         mongoose.set("strictQuery",true)
         await mongoose.connect(url)
+        console.log('Conectado')
     } catch (error) {
         console.log(`Error: ${error}`)
     }

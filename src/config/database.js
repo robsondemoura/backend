@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 async function main(){
     try {
-        const url = process.env.MONGODB_URI ? process.env.MONGODB_URI : 'mongodb://127.0.0.1/toolFlow'
+        const url = process.env.MONGODB_URI 
         mongoose.set("strictQuery",true)
         await mongoose.connect(url)
     } catch (error) {
